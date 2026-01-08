@@ -1,8 +1,5 @@
-const express = require("express");
-const crypto = require("crypto");
-const app = express();
-app.use(express.json());
-const usersRouter = require('./users.controllers/users.controller');
+const app = require("./app");
+
 
 // ENCRYPT
 // app.get("/encrypt", (req, res) => {
@@ -37,12 +34,5 @@ const usersRouter = require('./users.controllers/users.controller');
 // });
 
 
-app.get("/",(req, res) => {
-  res.send(`Hello, Welcome to the Home Page`);
-});
-
-app.use('/users', usersRouter);
-
 app.listen(3000, () => console.log("Server running on port 3000"));
 
-module.exports=app
