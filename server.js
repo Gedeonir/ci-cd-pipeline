@@ -3,8 +3,6 @@ const crypto = require("crypto");
 const app = express();
 app.use(express.json());
 const usersRouter = require('./users.controllers/users.controller');
-const authMiddleware = require("./middlewares/authMiddleware");
-const authorizeMiddleware = require("./middlewares/authorizeMiddleware");
 
 // ENCRYPT
 // app.get("/encrypt", (req, res) => {
@@ -39,10 +37,12 @@ const authorizeMiddleware = require("./middlewares/authorizeMiddleware");
 // });
 
 
-app.get("/", authMiddleware,authorizeMiddleware,(req, res) => {
-  res.send(`Hello ${req.user.username}, Welcome to the Home Page`);
+app.get("/",(req, res) => {
+  res.send(`Hello, Welcome to the Home Page`);
 });
 
 app.use('/users', usersRouter);
 
 app.listen(3000, () => console.log("Server running on port 3000"));
+
+module.exports=app
